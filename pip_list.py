@@ -28,7 +28,7 @@ default_args = {
 }
 
 with DAG(
-    'tutorial',
+    'pip_list',
     default_args=default_args,
     description='Runs bash command pip list',
     tags=['example'],
