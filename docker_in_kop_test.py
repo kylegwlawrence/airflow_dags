@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
 
-image_name = "kylelawrence/python-alpine3-19:test1_k8_pod "
+image_name = "kylelawrence/python-alpine3-19:test1_k8_pod"
 dag_name = f"docker-python-alpine"
 
 with DAG(
