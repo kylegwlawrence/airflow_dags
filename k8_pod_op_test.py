@@ -14,6 +14,7 @@ with DAG(
         arguments=["echo", "10"],
         labels={"foo": "bar"},
         task_id="dry_run_demo",
+        in_cluster=True,
         do_xcom_push=True
     )
 
