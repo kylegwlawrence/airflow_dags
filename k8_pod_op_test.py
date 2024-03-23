@@ -3,10 +3,9 @@ from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperato
 
 with DAG(
     "hello-dry-run",
-    description='Runs bash command pip list',
+    description='dry run for k8 pod operator',
     tags=['test']
 ) as dag:
-
 
     k = KubernetesPodOperator(
         name="hello-dry-run",
