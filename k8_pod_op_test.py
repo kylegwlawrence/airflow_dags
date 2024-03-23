@@ -4,7 +4,7 @@ from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperato
 with DAG(
     "hello-dry-run",
     description='Runs bash command pip list',
-    tags=['example']
+    tags=['test']
 ) as dag:
 
 
@@ -15,7 +15,6 @@ with DAG(
         arguments=["echo", "10"],
         labels={"foo": "bar"},
         task_id="dry_run_demo",
-        tags = ['test'],
         do_xcom_push=True
     )
 
