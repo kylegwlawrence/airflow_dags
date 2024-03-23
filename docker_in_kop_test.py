@@ -1,18 +1,19 @@
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
-import uuid
+
+image_name = "kylelawrence/python-slimbullseye:test1_k8_pod"
+dag_name = f"docker-{image_name.split('/')[1].replace(':','_')}"
 
 with DAG(
-    "docker_test",
+    dag_id = dag_name,
     description='testing a simple python script in a docker container with an argument passed in',
     tags=['test']
 ) as dag:
 
     run_docker = KubernetesPodOperator(
         name="run_docker",
-        image="kylelawrence/k8_pod_airflow:test1",
-        cmds=["--n_elements", "116"],
-        labels={"uuid": uuid.uuid4().hex},
+        image=image_name,
+        cmds=["python", "main.py", "--n_elements", "116"],
         task_id="run_docker",
         in_cluster=True,
         do_xcom_push=True,
