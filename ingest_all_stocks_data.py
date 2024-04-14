@@ -13,7 +13,7 @@ with DAG(
         , 'port':'35432'
         , 'database':'postgres'
         , 'schema':'stg'
-        , 'windows':[9, 21, 50]
+        , 'windows':[9, 21, 50, 120]
         , 'tickers': ['FSLY', 'SNOW']
         }
     , default_args = {
@@ -91,4 +91,4 @@ with DAG(
             task_id="end"
             )
         start >> [dim_date, dim_sp500] >> end 
-        start >> dim_exchange >> dim_stock >> fct_ema >> fct_macd >> fct_rsi >> fct_stock_fincancials >> fct_stocks >> end
+        start >> dim_ticker_type >> dim_exchange >> dim_stock >> fct_ema >> fct_macd >> fct_rsi >> fct_stock_fincancials >> fct_stocks >> end
